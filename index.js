@@ -3,7 +3,7 @@ const expressGraphQl = require('express-graphql');
 const typeDefs = require('./schema');
 const root = require('./resolver');
 const cors = require('cors');
-
+const dotenv = require('dotenv');
 const app = express();
 
 app.use(cors());
@@ -24,7 +24,8 @@ app.get('/', (req, res) => {
   });
 });
 
+dotenv.config();
 
-app.listen(8080, () => {
+app.listen(process.env.PORT, () => {
   console.log('Server Running at http://localhost:8080/query');
 });
