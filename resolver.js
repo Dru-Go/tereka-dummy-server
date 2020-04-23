@@ -118,4 +118,4 @@ const root = {
 
 };
 
-module.exports = root;
+export default root;
