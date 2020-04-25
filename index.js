@@ -1,8 +1,8 @@
-import express from 'express';
-import expressGraphQl from 'express-graphql';
-import typeDefs from './schema';
-import root from './resolver';
-import cors from 'cors';
+const express = require('express');
+const expressGraphQl = require('express-graphql');
+const typeDefs = require('./schema');
+const root = require('./resolver');
+const cors = require('cors');
 
 const dotenv = require('dotenv');
 const app = express();
@@ -17,7 +17,6 @@ app.use(
     graphiql: false,
   })
 );
-
 
 app.get('/', (req, res) => {
   return res.json({
