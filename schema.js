@@ -18,12 +18,7 @@ type Query {
 }
 
   type Mutation {
-	signUp( firstName : String!,
-		lastName : String!,
-		email : String!,
-		password : String!,
-		profilePicture : String
-	  ) : EntryResult!
+	signUp(firstname: String!, lastname: String!, email: String!, password: String!) : EntryResult!
 	AddToFavs(uid: String, id: String): [Audio]
 	suggest(title: String, author: String,category: String, discription:String): Suggestion
 	remove_fav_Audio(id: String): [Audio]

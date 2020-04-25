@@ -63,7 +63,10 @@ const root = {
 
   fav_Audios: ({uid}) => {
     const specUser = users.find((user) => user.Id === uid);
-    return specUser.Favorites;
+    if (specUser) {
+      return specUser.Favorites;
+    }
+    return null;
   },
 
   playlist_Audios: ({uid, pid}) => {
@@ -103,6 +106,18 @@ const root = {
   },
 
   // Mutations
+
+  signUp: ({firstname, lastname, email, password}) => {
+    console.log({firstname, lastname, email, password});
+    return {
+      UserId: 243324,
+      AccountId: 234423,
+      Role: 'Listener',
+      Token:
+        'asdaskjdlkjauasidjnmwenjkasdugashebqadljlajdlkadkjhajdasdjkasdasdhjhadagsd5465d4as56d456a4dda56sd65ad56adsdkaksdkjasjkdjkasjkdasdgh',
+      Status: 'Active',
+    };
+  },
 
   AddToFavs: ({uid, id}) => {
     console.log(id);
