@@ -48,16 +48,6 @@ type Query {
 	Status : String,
 }
 
-  
-
-  type EntryResult {
-	UserId : Int,
-	AccountId : Int,
-	Role : String,
-	Token : String,
-	Status : String,
-}
-
 
   type Details {
 	  User: User
