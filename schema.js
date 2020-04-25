@@ -8,19 +8,22 @@ type Query {
 	fav_Audios(uid: String): [Audio]
 	all_Playlists(uid: String): [Playlist]
 	playlist_Audios(uid: String, pid: String): [Audio]
-	details_Author(uid: String): User
-	details_Narrator(uid: String): User
+	details_Author(uid: String): Details
+	details_Narrator(id: String): Details
 	search_Audios(title: String): [Audio]
-	search_Author(name: String): [Auther_Details]
-	search_Narrator(name: String): [Auther_Details]
 	suggestions: [Suggestion]
 	search_Suggestion(title: String): [Suggestion]
 	recentPlay(uid:String): Audio
+	signIn( email : String!, password : String!) : EntryResult!
 }
 
   type Mutation {
-	signIn(email: String, password: String): Auth
-	signUp(name: String, email: String, password: String, theme: String): Auth
+	signUp( firstName : String!,
+		lastName : String!,
+		email : String!,
+		password : String!,
+		profilePicture : String
+	  ) : EntryResult!
 	AddToFavs(uid: String, id: String): [Audio]
 	suggest(title: String, author: String,category: String, discription:String): Suggestion
 	remove_fav_Audio(id: String): [Audio]
@@ -30,18 +33,28 @@ type Query {
 	Like(uid: String, audioId: String): Audio
 	Follow(uid: String, follow: String): User
   }
-
-  type Auther_Details{
-	  User: User
-	  NumAudios: Int
-	  Followers: Int
-  }
   
   type Auth {
 	token: String
 	user: User
   }
   
+
+  type EntryResult {
+	UserId : Int,
+	AccountId : Int,
+	Role : String,
+	Token : String,
+	Status : String,
+}
+
+
+  type Details {
+	  User: User
+	  Audios: [Audio]
+	  Followers: Int
+  }
+
   type User {
 	Id: ID!
 	Name: String
@@ -100,4 +113,3 @@ type Query {
 `);
 
 export default typeDefs;
-

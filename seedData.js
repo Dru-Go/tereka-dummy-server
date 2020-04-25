@@ -51,6 +51,19 @@ const audios = [
     Published: true,
     CreatedAt: 'Sun Apr 12 11:48:12 2020',
   },
+  {
+    Id: 'hash5',
+    ImageURL: '../book1.png',
+    Title: 'The Weatherman',
+    Author: 'Penny Vencezzi',
+    Type: 'Fiction',
+    Narrator: 'Eric Lancer',
+    Url: 'song.mp3',
+    Likes: 34,
+    Duration: '1:23:34',
+    Published: true,
+    CreatedAt: 'Sun Apr 12 11:48:12 2020',
+  },
 ];
 
 const playlists = [
@@ -75,12 +88,31 @@ const userType = [
     Type: 'Author',
     Following: [],
   },
+  {
+    Type: 'Listener',
+    Following: [],
+  },
 ];
+
 
 const users = [
   {
-    Id: 'hash2',
-    Name: 'Boel',
+    Id: '2345',
+    Name: 'Eric Lancer',
+    Type: userType[0],
+    Email: 'dmac@mail.com',
+    ImageURL: '../avatar.png',
+    Password: 'dmac@mail',
+    Theme: 'Light',
+    Likes: 32,
+    Following: [],
+    Playlist: [],
+    Favorites: audios,
+    CreatedAt: 'Fri Apr 17 07:48:13 2020',
+  },
+  {
+    Id: 'hash3',
+    Name: 'Dell',
     Type: userType[0],
     Email: 'dmac@mail.com',
     ImageURL: './logo.png',
@@ -93,8 +125,22 @@ const users = [
     CreatedAt: 'Fri Apr 17 07:48:13 2020',
   },
   {
-    Id: 'hash3',
-    Name: 'Dell',
+    Id: 'hash2',
+    Name: 'Bill',
+    Type: userType[2],
+    Email: 'dmac@mail.com',
+    ImageURL: './logo.png',
+    Password: 'dmac@mail',
+    Theme: 'Light',
+    Likes: 32,
+    Following: [],
+    Playlist: [],
+    Favorites: audios,
+    CreatedAt: 'Fri Apr 17 07:48:13 2020',
+  },
+  {
+    Id: 'hash5',
+    Name: 'Tony',
     Type: userType[1],
     Email: 'dmac@mail.com',
     ImageURL: './logo.png',
