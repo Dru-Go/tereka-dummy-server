@@ -76,6 +76,17 @@ const root = {
     );
   },
 
+  signIn: ({email, password}) => {
+    return {
+      UserId: 243324,
+      AccountId: 234423,
+      Role: 'Listener',
+      Token:
+        'asdaskjdlkjauasidjnmwenjkasdugashebqadljlajdlkadkjhajdasdjkasdasdhjhadagsd5465d4as56d456a4dda56sd65ad56adsdkaksdkjasjkdjkasjkdasdgh',
+      Status: 'Active',
+    };
+  },
+
   all_users: () => {
     return users;
   },

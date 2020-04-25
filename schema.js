@@ -16,6 +16,7 @@ type Query {
 	suggestions: [Suggestion]
 	search_Suggestion(title: String): [Suggestion]
 	recentPlay(uid:String): Audio
+	signIn( email : String!, password : String!) : EntryResult!
 }
 
   type Mutation {
@@ -41,6 +42,16 @@ type Query {
 	token: String
 	user: User
   }
+
+
+  type EntryResult {
+	UserId : Int,
+	AccountId : Int,
+	Role : String,
+	Token : String,
+	Status : String,
+}
+
   
   type User {
 	Id: ID!
