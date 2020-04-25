@@ -145,4 +145,4 @@ const root = {
   },
 };
 
-export default root;
+module.exports = root;

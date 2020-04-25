@@ -1,4 +1,4 @@
-import {buildSchema} from 'graphql';
+const {buildSchema} = require('graphql');
 const typeDefs = buildSchema(`
 type Query {
 	hello: String
@@ -122,4 +122,4 @@ type Query {
   }
 `);
 
-export default typeDefs;
+module.exports = typeDefs;
