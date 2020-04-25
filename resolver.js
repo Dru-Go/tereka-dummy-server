@@ -101,18 +101,6 @@ const root = {
     return audios[1];
   },
 
-  signIn: ({email, password}) => {
-    console.log('Email is ', email, ' Passoword is', password);
-    return {
-      UserId: 243324,
-      AccountId: 234423,
-      Role: 'Listener',
-      Token:
-        'asdaskjdlkjauasidjnmwenjkasdugashebqadljlajdlkadkjhajdasdjkasdasdhjhadagsd5465d4as56d456a4dda56sd65ad56adsdkaksdkjasjkdjkasjkdasdgh',
-      Status: 'Active',
-    };
-  },
-
   // Mutations
 
   AddToFavs: ({uid, id}) => {
