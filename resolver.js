@@ -33,6 +33,10 @@ const root = {
     return suggestions;
   },
 
+  popular: () => {
+    return audios
+  },
+
   suggest: ({title, author, category, discription}) => {
     const suggestion = {
       Id: new Date().getTime(),

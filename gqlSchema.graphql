@@ -6,42 +6,47 @@ type Query {
   fav_Audios(uid: String): [Audio]
   all_Playlists(uid: String): [Playlist]
   playlist_Audios(uid: String, pid: String): [Audio]
+  details_Author(uid: String): Details
   details_Narrator(id: String): Details
   search_Audios(title: String): [Audio]
   suggestions: [Suggestion]
   search_Suggestion(title: String): [Suggestion]
+  recentPlay(uid: String): Audio
+  signIn(email: String!, password: String!): EntryResult!
 
-  # Recent Query (optional)
-  mostRecentPlay(uid: String): Audio
-  recentPlays(uid: String): [Audio]
+  popular(): [Audio]
+
+  # Gets all the recently played audios from a user with the ID
+  allRecents(uid: String): [Recent]
+
+  # Gets the latest recent played narration
+  mostRecentAudio(uid: String): [Audio] # [Naration] in your case
 }
 
 type Mutation {
-  signIn(email: String, password: String): Auth
-  signUp(name: String, email: String, password: String, theme: String): Auth
+  signUp(
+    firstname: String!
+    lastname: String!
+    email: String!
+    password: String!
+  ): EntryResult!
+
   AddToFavs(uid: String, id: String): [Audio]
+
   suggest(
     title: String
     author: String
     category: String
     discription: String
   ): Suggestion
+
   remove_fav_Audio(id: String): [Audio]
   AddToPlaylist(uid: String, pid: String, audioID: String): [Audio]
   NewPlaylist(uid: String, name: String): Playlist
   RemovePlaylist(uid: String, id: String): Playlist
-  Like(uid: String, audioId: String): Audio
-  Follow(uid: String, follow: String): User
 
-  # Recent Mutation (Optional)
-  AddToRecent(uid: String, audioid: String, pointer: Int): Audio
-}
-
-# Must do
-type Details {
-  User: User
-  Audios: [Audio]
-  Followers: Int
+  # Adds on play
+  AddToRecents(uId: String, nId: String): Audio # Returns Narration in your case
 }
 
 type Auth {
@@ -49,10 +54,30 @@ type Auth {
   user: User
 }
 
+type EntryResult {
+  UserId: Int
+  AccountId: Int
+  Role: String
+  Token: String
+  Status: String
+}
+
+# Recent 
+type Recent {
+  uId: Int
+  Narration: Audio # In your case its Naration
+}
+
+type Details {
+  User: User
+  Audios: [Audio]
+  Followers: Int
+}
+
 type User {
   Id: ID!
   Name: String
-  Type: UserType
+  Type: USERTYPE
   Email: String!
   ImageURL: String
   Password: String!
@@ -62,15 +87,6 @@ type User {
   Playlist: [Playlist]
   Favorites: [Audio]
   CreatedAt: String!
-}
-
-# on every add you should append the audio id to the Audio list attribute if u can
-# if u have a better idea let me know
-type Recent_Plays {
-  uid: String
-  Audios: [Audio] # Here i need this array to show all the recently played audios
-  Pointer: Int # Here i need this pointer let me know the most recent audios seek pointer
-  PlayedAt: String
 }
 
 type Audio {
@@ -97,19 +113,23 @@ type Suggestion {
   CreatedAt: String
 }
 
+# Status change 
 enum STATUS {
   CONFIRMED
   PENDING
   AVAILABLE
 }
 
-type UserType {
-  Type: String!
-  Following: [User]
+enum USERTYPE{
+  LISTENER
+  NARRATOR
+  AUTHOR
 }
+
 
 type Playlist {
   Id: ID!
+  Uid: ID!
   Name: String!
   Audios: [Audio]
 }
