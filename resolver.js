@@ -4,6 +4,7 @@ const [
   users,
   suggestions,
   status,
+  recents,
 ] = require('./seedData.js');
 
 const root = {
@@ -31,6 +32,10 @@ const root = {
 
   suggestions: () => {
     return suggestions;
+  },
+
+  popular: () => {
+    return audios;
   },
 
   suggest: ({title, author, category, discription}) => {
@@ -146,6 +151,13 @@ const root = {
     const playlist = {Id: Date.now(), Name: name};
     playlists.push(playlist);
     return playlist;
+  },
+
+  AddToRecents: ({uid, nid}) => {
+    console.log('UId id', uid, 'Nid is ', nid);
+    const audio = audios.find((audio) => audio.Id === nid);
+    recents.push({uId: uid, Narration: audio});
+    return audio;
   },
 };
 

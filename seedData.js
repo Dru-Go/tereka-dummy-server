@@ -66,6 +66,8 @@ const audios = [
   },
 ];
 
+const recents = [];
+
 const playlists = [
   {
     Id: 'hash1',
@@ -93,7 +95,6 @@ const userType = [
     Following: [],
   },
 ];
-
 
 const users = [
   {
@@ -162,7 +163,7 @@ const status = {
 
 const suggestions = [
   {
-    Id:'hash1',
+    Id: 'hash1',
     Title: "Anna's Diary",
     Author: 'Anna',
     Likes: 32,
@@ -172,7 +173,7 @@ const suggestions = [
     CreatedAt: 'Fri Apr 17 07:48:13 2020',
   },
   {
-    Id:'hash2',
+    Id: 'hash2',
     Title: 'Akams Journey',
     Author: 'Anna',
     Likes: 32,
@@ -182,7 +183,7 @@ const suggestions = [
     CreatedAt: 'Fri Apr 17 07:48:13 2020',
   },
   {
-    Id:'hash3',
+    Id: 'hash3',
     Title: 'Living Large',
     Author: 'Dre',
     Likes: 23,
@@ -192,7 +193,7 @@ const suggestions = [
     CreatedAt: 'Fri Apr 17 07:48:13 2020',
   },
   {
-    Id:'hash4',
+    Id: 'hash4',
     Title: 'The Tunnel',
     Author: 'Missy May',
     Likes: 43,
@@ -203,4 +204,4 @@ const suggestions = [
   },
 ];
 
-module.exports = [audios, playlists, users, suggestions, status];
+module.exports = [audios, playlists, users, suggestions, status, recents];

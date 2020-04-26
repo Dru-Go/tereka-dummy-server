@@ -25,13 +25,19 @@ type Query {
 	AddToPlaylist(uid: String, pid: String, audioID: String): [Audio]
 	NewPlaylist(uid: String, name: String): Playlist
 	RemovePlaylist(uid: String, id: String): Playlist
-	Like(uid: String, audioId: String): Audio
-	Follow(uid: String, follow: String): User
+
+	# Adds on play
+	AddToRecents(uid: String, nid: String): Audio 			# Returns Narration in your case 
   }
   
   type Auth {
 	token: String
 	user: User
+  }
+
+  type Recents{
+	  uId: ID!
+	  Narration: Audio!
   }
   
 
