@@ -4,6 +4,7 @@ const [
   users,
   suggestions,
   status,
+  recents,
 ] = require('./seedData.js');
 
 const root = {
@@ -34,7 +35,7 @@ const root = {
   },
 
   popular: () => {
-    return audios
+    return audios;
   },
 
   suggest: ({title, author, category, discription}) => {
@@ -67,7 +68,10 @@ const root = {
 
   fav_Audios: ({uid}) => {
     const specUser = users.find((user) => user.Id === uid);
-    return specUser.Favorites;
+    if (specUser) {
+      return specUser.Favorites;
+    }
+    return null;
   },
 
   playlist_Audios: ({uid, pid}) => {
@@ -107,6 +111,18 @@ const root = {
 
   // Mutations
 
+  signUp: ({firstname, lastname, email, password}) => {
+    console.log({firstname, lastname, email, password});
+    return {
+      UserId: 243324,
+      AccountId: 234423,
+      Role: 'Listener',
+      Token:
+        'asdaskjdlkjauasidjnmwenjkasdugashebqadljlajdlkadkjhajdasdjkasdasdhjhadagsd5465d4as56d456a4dda56sd65ad56adsdkaksdkjasjkdjkasjkdasdgh',
+      Status: 'Active',
+    };
+  },
+
   AddToFavs: ({uid, id}) => {
     console.log(id);
     const specUser = users.find((user) => user.Id === uid);
@@ -134,6 +150,13 @@ const root = {
     const playlist = {Id: Date.now(), Name: name};
     playlists.push(playlist);
     return playlist;
+  },
+
+  AddToRecents: ({uid, nid}) => {
+    console.log('UId id', uid, 'Nid is ', nid);
+    const audio = audios.find((audio) => audio.Id === nid);
+    recents.push({uId: uid, Narration: audio});
+    return audio;
   },
 };
 

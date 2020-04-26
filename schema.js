@@ -29,12 +29,7 @@ type Query {
 }
 
   type Mutation {
-	signUp( firstName : String!,
-		lastName : String!,
-		email : String!,
-		password : String!,
-		profilePicture : String
-	  ) : EntryResult!
+	signUp(firstname: String!, lastname: String!, email: String!, password: String!) : EntryResult!
 	AddToFavs(uid: String, id: String): [Audio]
 	suggest(title: String, author: String,category: String, discription:String): Suggestion
 	remove_fav_Audio(id: String): [Audio]
@@ -43,7 +38,7 @@ type Query {
 	RemovePlaylist(uid: String, id: String): Playlist
 
 	# Adds on play
-	AddToRecents(uId: String, nId: String): Audio 			# Returns Narration in your case 
+	AddToRecents(uid: String, nid: String): Audio 			# Returns Narration in your case 
   }
   
   type Auth {
@@ -51,6 +46,11 @@ type Query {
 	user: User
   }
 
+  type Recents{
+	  uId: ID!
+	  Narration: Audio!
+  }
+  
 
   type EntryResult {
 		UserId : Int,
