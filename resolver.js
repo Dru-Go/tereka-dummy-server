@@ -90,6 +90,19 @@ const root = {
     );
   },
 
+
+  search_By_Author: ({name}) => {
+    return audios.filter((audio) =>
+      audio.Author.toLowerCase().startsWith(name.toLowerCase())
+    );
+  },
+
+  search_By_Narrator: ({name}) => {
+    return audios.filter((audio) =>
+      audio.Narrator.toLowerCase().startsWith(name.toLowerCase())
+    );
+  },
+
   all_users: () => {
     return users;
   },
@@ -151,9 +164,12 @@ const root = {
   AddToFavs: ({uid, id}) => {
     console.log(id);
     const specUser = users.find((user) => user.Id === uid);
+    console.log("The specific user is ", specUser)
     const specAudio = audios.find((audio) => audio.Id === id);
-
+    console.log("Audio is ", specUser)
+    
     specUser.Favorites.push(specAudio);
+    console.log("Finally user is", specUser)
     return specUser.Favorites;
   },
 

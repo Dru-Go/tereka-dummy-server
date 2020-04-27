@@ -11,6 +11,8 @@ type Query {
 	details_Author(uid: String): Details
 	details_Narrator(id: String): Details
 	search_Audios(title: String): [Audio]
+	search_By_Author(name: String): [Audio]
+	search_By_Narrator(name: String): [Audio]
 	suggestions: [Suggestion]
 	search_Suggestion(title: String): [Suggestion]
 	recentPlay(uid:String): Audio
