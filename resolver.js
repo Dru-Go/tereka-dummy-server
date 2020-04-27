@@ -4,7 +4,7 @@ const [
   users,
   suggestions,
   status,
-  recents,
+  recentPlays,
 ] = require('./seedData.js');
 
 const root = {
@@ -90,6 +90,31 @@ const root = {
     );
   },
 
+  all_users: () => {
+    return users;
+  },
+
+  recents: ({uid}) => {
+    const recent = recentPlays.filter((rec) => rec.uId === uid);
+    if (recent) {
+      return recent;
+    }
+    return null;
+  },
+
+  all_Recents: () => {
+    return recentPlays;
+  },
+
+  recentPlay: ({uid}) => {
+    const recent = recentPlays.filter((rec) => rec.uId === uid);
+    if (recent) {
+      const no = recent.length - 1;
+      return recent[no].Narration;
+    }
+    return null;
+  },
+
   signIn: ({email, password}) => {
     return {
       UserId: 243324,
@@ -155,7 +180,7 @@ const root = {
   AddToRecents: ({uid, nid}) => {
     console.log('UId id', uid, 'Nid is ', nid);
     const audio = audios.find((audio) => audio.Id === nid);
-    recents.push({uId: uid, Narration: audio});
+    recentPlays.push({uId: uid, Narration: audio});
     return audio;
   },
 };

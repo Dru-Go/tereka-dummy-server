@@ -14,18 +14,10 @@ type Query {
 	suggestions: [Suggestion]
 	search_Suggestion(title: String): [Suggestion]
 	recentPlay(uid:String): Audio
-	signIn( email : String!, password : String!) : EntryResult!
-
 	popular: [Audio]
-
-
-	# Gets all the recently played audios from a user with the ID 
-
-	allRecents(uid: String): [Recent]
-
-	# Gets the latest recent played narration 
-
-	mostRecentAudio(uid: String): [Audio]   # [Naration] in your case
+	recents(uid: String): [Recents]
+	all_Recents: [Recents]
+	signIn( email : String!, password : String!) : EntryResult!
 }
 
   type Mutation {
