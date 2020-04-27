@@ -14,6 +14,9 @@ type Query {
 	suggestions: [Suggestion]
 	search_Suggestion(title: String): [Suggestion]
 	recentPlay(uid:String): Audio
+	popular: [Audio]
+	recents(uid: String): [Recents]
+	all_Recents: [Recents]
 	signIn( email : String!, password : String!) : EntryResult!
 }
 

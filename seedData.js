@@ -66,7 +66,7 @@ const audios = [
   },
 ];
 
-const recents = [];
+const recentPlays = [{uId: '243324', Narration: audios[0]}];
 
 const playlists = [
   {
@@ -204,4 +204,4 @@ const suggestions = [
   },
 ];
 
-module.exports = [audios, playlists, users, suggestions, status, recents];
+module.exports = [audios, playlists, users, suggestions, status, recentPlays];
